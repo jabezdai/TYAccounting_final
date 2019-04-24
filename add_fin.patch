@@ -1,0 +1,37 @@
+Index: app/src/main/res/layout/activity_add.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_add.xml	(date 1556115446000)
++++ app/src/main/res/layout/activity_add.xml	(date 1556115558132)
+@@ -163,4 +163,13 @@
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
++
++    <Button
++        android:id="@+id/button8"
++        android:layout_width="46dp"
++        android:layout_height="46dp"
++        android:onClick="back"
++        android:text="<"
++        tools:layout_editor_absoluteX="12dp"
++        tools:layout_editor_absoluteY="10dp" />
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/account/add.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/account/add.java	(date 1556115446000)
++++ app/src/main/java/com/example/account/add.java	(date 1556115558145)
+@@ -15,4 +15,7 @@
+     public void fin(View v){
+         finish();
+     }
++    public void back(View v){
++        finish();
++    }
+ }
