@@ -15,4 +15,7 @@ public class add extends AppCompatActivity {
     public void fin(View v){
         finish();
     }
+    public void back(View v){
+        finish();
+    }
 }
