@@ -24,4 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(itdata);
     }
+    public void personal(View v) {
+        Intent itpersonal = new Intent(this,activity_personal.class);
+
+        startActivity(itpersonal);
+    }
+
 }
