@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Account</string>
+
+    <string-array name="type">
+        <item>食物</item>
+        <item>交通</item>
+        <item>衣著</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="payway">
+        <item>現金</item>
+        <item>悠悠卡</item>
+        <item>信用卡</item>
+    </string-array>
+
+    <string-array name="data">
+        <item>圓餅圖</item>
+        <item>長條圖</item>
+    </string-array>
 </resources>

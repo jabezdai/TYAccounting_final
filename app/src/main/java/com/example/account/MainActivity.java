@@ -14,8 +14,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void add(View v){
-        Intent it = new Intent(this,add.class);
+        Intent itadd = new Intent(this,add.class);
 
-        startActivity(it);
+        startActivity(itadd);
+    }
+
+    public void data(View v) {
+        Intent itdata = new Intent(this, data.class);
+
+        startActivity(itdata);
     }
 }

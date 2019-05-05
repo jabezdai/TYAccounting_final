@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/type"
         android:layout_width="217dp"
         android:layout_height="44dp"
         android:layout_marginStart="30dp"
@@ -133,13 +133,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/payway"
         android:layout_width="217dp"
         android:layout_height="44dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/type" />
 
     <TextView
         android:id="@+id/textView8"
@@ -162,14 +162,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/payway" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
         android:onClick="back"
         android:text="<"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="10dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
