@@ -11,7 +11,7 @@ public class family extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
     }
-    public void fin(View v){
+    public void fin(View V){
         finish();
     }
 }

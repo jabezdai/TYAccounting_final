@@ -29,5 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(itpersonal);
     }
+    public void listl(View v) {
+        Intent itlist = new Intent(this,list.class);
+
+        startActivity(itlist);
+    }
 
 }
