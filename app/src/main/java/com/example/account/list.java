@@ -21,6 +21,11 @@ public class list extends AppCompatActivity implements View.OnClickListener, Dat
 
         textView18 = (TextView)findViewById(R.id.textView18);
         textView18.setOnClickListener(this);
+        int nowyear = c.get(Calendar.YEAR);
+        int nowmonth = c.get(Calendar.MONTH);
+        int nowday = c.get(Calendar.DAY_OF_MONTH);
+        nowmonth=nowmonth+1;
+        textView18.setText(nowyear+"/"+nowmonth+"/"+nowday);
     }
 
     @Override
@@ -33,6 +38,7 @@ public class list extends AppCompatActivity implements View.OnClickListener, Dat
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        month=month+1;
         textView18.setText(year+"/"+month+"/"+dayOfMonth);
     }
     public void fin(View v){
