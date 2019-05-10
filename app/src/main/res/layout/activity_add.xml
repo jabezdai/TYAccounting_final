@@ -38,10 +38,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="47dp"
         android:ems="10"
+        android:hint="輸入名稱"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="輸入名稱" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView4"
@@ -61,10 +61,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="輸入金額"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        tools:text="輸入金額" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
         android:id="@+id/textView5"
@@ -84,8 +84,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="輸入時間"
         android:inputType="textPersonName"
-        android:text="輸入時間"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
@@ -107,10 +107,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="輸入地點"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
-        tools:text="輸入地點" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <TextView
         android:id="@+id/textView7"
