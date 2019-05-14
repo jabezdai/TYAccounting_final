@@ -11,10 +11,25 @@ import java.util.Calendar;
 public class add extends AppCompatActivity {
     Calendar c=Calendar.getInstance();
     TextView textView2;
-    @Override
+
+
+    EditText name;
+    EditText money;
+    EditText time;
+    EditText place;
+    Spinner type;
+    Spinner payway;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        Intent it1 = getIntent();
+
+        name = (EditText)findViewById(R.id.name);
+        money = (EditText)findViewById(R.id.money);
+        time  = (EditText)findViewById(R.id.time);
+        place = (EditText)findViewById(R.id.place);
+        type = (Spinner)findViewById(R.id.type);
+        payway = (Spinner)findViewById(R.id.payway);
 
         textView2= (TextView)findViewById(R.id.textView2);
         int nowyear = c.get(Calendar.YEAR);
@@ -24,9 +39,22 @@ public class add extends AppCompatActivity {
         textView2.setText(nowyear+"/"+nowmonth+"/"+nowday);
     }
     public void fin(View v){
+
+        Intent it = new Intent();
+        String [] Place = getResources().getStringArray(R.array.type);
+        int index = type.getSelectedItemPosition();
+
+        String [] Payway = getResources().getStringArray(R.array.payway);
+        int index1 = payway.getSelectedItemPosition();
+
+        it.putExtra("內容",name.getText().toString());
+
+
+        setResult(RESULT_OK,it);
         finish();
     }
-    public void back(View v){
+    public void back(View v)
+    {
         finish();
     }
 }
