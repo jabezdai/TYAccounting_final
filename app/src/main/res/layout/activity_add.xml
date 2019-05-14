@@ -13,7 +13,7 @@
         android:layout_marginStart="165dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="181dp"
-        android:text="2019/4/25"
+        android:text="2019"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.233"
