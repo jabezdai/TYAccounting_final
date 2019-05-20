@@ -43,13 +43,20 @@ public class add extends AppCompatActivity {
     public void fin(View v){
 
         Intent it = new Intent();
-        String [] Place = getResources().getStringArray(R.array.type);
+        String [] Type = getResources().getStringArray(R.array.type);
         int index = type.getSelectedItemPosition();
 
         String [] Payway = getResources().getStringArray(R.array.payway);
         int index1 = payway.getSelectedItemPosition();
 
-        it.putExtra("內容",name.getText().toString());
+        it.putExtra("內容",name.getText().toString()+"                                                   "+money.getText().toString());
+        it.putExtra("名稱",name.getText().toString());
+        it.putExtra("支出",money.getText().toString());
+        it.putExtra("時間",time.getText().toString());
+        it.putExtra("地點",place.getText().toString());
+        it.putExtra("類別",Type[index]);
+        it.putExtra("方式",Payway[index]);
+
 
 
         setResult(RESULT_OK,it);

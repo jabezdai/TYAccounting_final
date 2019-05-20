@@ -17,15 +17,26 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
     Calendar c=Calendar.getInstance();
     TextView textView;
-    String[] aMemo ={"1"};
+    String[] aMemo={"","","","","","","","","","","","","","",""};
+    String[] Name;
+    String[] Money;
+    String[] Time;
+    String[] Place;
+    String[] Type;
+    String[] Payway;
     ListView lv;
     ArrayAdapter<String> aa;
-    int index ;
+    int index=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        index = 0;
+        Name = new String[100];
+        Money = new String[100];
+        Time = new String[100];
+        Place = new String[100];
+        Type = new String[100];
+        Payway = new String[100];
 
         textView= (TextView)findViewById(R.id.textView);
         int nowyear = c.get(Calendar.YEAR);
@@ -42,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     public void add(View v){
         Intent itadd = new Intent(this,add.class);
 
-        itadd.putExtra("內容",aMemo[index]);
         startActivityForResult(itadd,index);
     }
 
@@ -65,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestcode,int resultcode,Intent itadd){
         if(resultcode==RESULT_OK){
             aMemo[index] = itadd.getStringExtra("內容");
+            Name[index] = itadd.getStringExtra("名稱");
+            Money[index] = itadd.getStringExtra("支出");
+            Time[index] = itadd.getStringExtra("時間");
+            Place[index] = itadd.getStringExtra("地點");
+            Type[index]= itadd.getStringExtra("類別");
+            Payway[index] = itadd.getStringExtra("方式");
+            index++;
         }
         aa.notifyDataSetChanged();
     }
