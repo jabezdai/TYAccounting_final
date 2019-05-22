@@ -3,10 +3,12 @@ package com.example.account;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -58,9 +60,18 @@ public class add extends AppCompatActivity {
         it.putExtra("方式",Payway[index]);
 
 
-
-        setResult(RESULT_OK,it);
-        finish();
+        if(name.length()==0){
+            Toast toast = Toast.makeText(this,"名稱為必填欄位",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM,0,200);
+            toast.show();
+        }else if(money.length()==0){
+            Toast toast = Toast.makeText(this,"支出為必填欄位",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM,0,200);
+            toast.show();
+        }else {
+            setResult(RESULT_OK, it);
+            finish();
+        }
     }
     public void back(View v)
     {
