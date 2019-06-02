@@ -13,6 +13,7 @@
         <item>現金</item>
         <item>悠悠卡</item>
         <item>信用卡</item>
+        <item>點點卡</item>
     </string-array>
 
     <string-array name="data">

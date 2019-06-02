@@ -1,6 +1,9 @@
 package com.example.account;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +19,10 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     Calendar c=Calendar.getInstance();
+    static final String db_account="acDB";
+    static final String tb_account="actb";
+    SQLiteDatabase db;
     TextView textView;
-    String[] aMemo={"","","","","","","","","","","","","","",""};
-    String[] Name;
-    String[] Money;
-    String[] Time;
-    String[] Place;
-    String[] Type;
-    String[] Payway;
     ListView lv;
     ArrayAdapter<String> aa;
     int index=0;
@@ -31,12 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Name = new String[100];
-        Money = new String[100];
-        Time = new String[100];
-        Place = new String[100];
-        Type = new String[100];
-        Payway = new String[100];
+        db =openOrCreateDatabase(db_account, Context.MODE_PRIVATE,null);
+
 
         textView= (TextView)findViewById(R.id.textView);
         int nowyear = c.get(Calendar.YEAR);
@@ -45,9 +40,17 @@ public class MainActivity extends AppCompatActivity {
         nowmonth=nowmonth+1;
         textView.setText(nowyear+"/"+nowmonth+"/"+nowday);
 
-        lv = (ListView)findViewById(R.id.lv);
-        aa = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,aMemo);
-        lv.setAdapter(aa);
+
+    }
+    private void addData(String name,String money,String time,String place,String type,String payway){
+        ContentValues cv=new ContentValues(6);
+        cv.put("名稱",name);
+        cv.put("支出",money);
+        cv.put("時間",time);
+        cv.put("地點",place);
+        cv.put("類別",type);
+        cv.put("方式",payway);
+        db.insert(tb_account,null,cv);
     }
 
     public void add(View v){
@@ -74,16 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestcode,int resultcode,Intent itadd){
         if(resultcode==RESULT_OK){
-            aMemo[index] = itadd.getStringExtra("內容");
-            Name[index] = itadd.getStringExtra("名稱");
-            Money[index] = itadd.getStringExtra("支出");
-            Time[index] = itadd.getStringExtra("時間");
-            Place[index] = itadd.getStringExtra("地點");
-            Type[index]= itadd.getStringExtra("類別");
-            Payway[index] = itadd.getStringExtra("方式");
-            index++;
+            addData(itadd.getStringExtra("名稱"),itadd.getStringExtra("支出"),itadd.getStringExtra("時間"),itadd.getStringExtra("地點"),itadd.getStringExtra("類別"),itadd.getStringExtra("方式"));
         }
-        aa.notifyDataSetChanged();
     }
 
 }
