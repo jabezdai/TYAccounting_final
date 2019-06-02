@@ -18,8 +18,7 @@ public class add extends AppCompatActivity implements View.OnClickListener, Date
     Calendar c=Calendar.getInstance();
     TextView textView2;
     TextView time;
-
-
+    
     EditText name;
     EditText money;
     EditText place;
