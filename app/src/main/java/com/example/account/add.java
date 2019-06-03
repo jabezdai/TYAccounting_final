@@ -18,7 +18,7 @@ public class add extends AppCompatActivity implements View.OnClickListener, Date
     Calendar c=Calendar.getInstance();
     TextView textView2;
     TextView time;
-    
+
     EditText name;
     EditText money;
     EditText place;
@@ -28,7 +28,6 @@ public class add extends AppCompatActivity implements View.OnClickListener, Date
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        Intent it1 = getIntent();
 
         name = (EditText)findViewById(R.id.name);
         money = (EditText)findViewById(R.id.money);

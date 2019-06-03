@@ -1,0 +1,17 @@
+Index: app/src/main/java/com/example/account/add.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/account/add.java	(date 1559473716000)
++++ app/src/main/java/com/example/account/add.java	(date 1559473885509)
+@@ -18,8 +18,7 @@
+     Calendar c=Calendar.getInstance();
+     TextView textView2;
+     TextView time;
+-
+-
++    
+     EditText name;
+     EditText money;
+     EditText place;
