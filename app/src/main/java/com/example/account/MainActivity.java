@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
             mData.add(itemData);
         };
-
         adapter = new SimpleAdapter(this, mData, R.layout.accountlist, new String[]{"名稱", "支出", "時間"}, new int[]{R.id.textView23, R.id.textView21, R.id.textView22});
         ListView lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(adapter);
