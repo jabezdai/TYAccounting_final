@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int one;
         db = openOrCreateDatabase(db_account, Context.MODE_PRIVATE, null);
         String CREAT_SQL = "CREATE TABLE IF NOT EXISTS " + table_account + "(名稱 VARCHER(32)," + "支出 VARCHER(32)," + "時間 VARCHER(32)," + "地點 VARCHER(32)," + "類別 VARCHER(32)," + "方式 VARCHER(32))";
         db.execSQL(CREAT_SQL);
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
             mData.add(itemData);
         };
-
         adapter = new SimpleAdapter(this, mData, R.layout.accountlist, new String[]{"名稱", "支出", "時間"}, new int[]{R.id.textView23, R.id.textView21, R.id.textView22});
         ListView lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(adapter);
