@@ -58,7 +58,7 @@ public class add extends AppCompatActivity implements View.OnClickListener, Date
         it.putExtra("時間",time.getText().toString());
         it.putExtra("地點",place.getText().toString());
         it.putExtra("類別",Type[index]);
-        it.putExtra("方式",Payway[index]);
+        it.putExtra("方式",Payway[index1]);
 
 
         if(name.length()==0){
@@ -74,8 +74,8 @@ public class add extends AppCompatActivity implements View.OnClickListener, Date
             finish();
         }
     }
-    public void back(View v)
-    {
+    public void back(View v) {
+        setResult(RESULT_CANCELED);
         finish();
     }
     @Override
