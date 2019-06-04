@@ -79,6 +79,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         cv.put("類別",type);
         cv.put("方式",payway);
         db.insert(table_account,null,cv);
+        cursor = db.rawQuery("SELECT * FROM " + table_account, null);
+        mData = new ArrayList<Map<String, Object>>();
+        Map<String, Object> itemData = null;
+        cursor.moveToFirst();
+        itemData = new HashMap<String, Object>();
+        itemData.put("名稱",cursor.getString(cursor.getColumnIndex("名稱")));
+        itemData.put("支出",cursor.getString(cursor.getColumnIndex("支出")));
+        itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
+        mData.add(itemData);
+        while (cursor.moveToNext()) {
+            itemData = new HashMap<String, Object>();
+            itemData.put("名稱",cursor.getString(cursor.getColumnIndex("名稱")));
+            itemData.put("支出",cursor.getString(cursor.getColumnIndex("支出")));
+            itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
+            mData.add(itemData);
+        };
+        adapter = new SimpleAdapter(this, mData, R.layout.accountlist, new String[]{"名稱", "支出", "時間"}, new int[]{R.id.textView23, R.id.textView21, R.id.textView22});
+        ListView lv = (ListView) findViewById(R.id.lv);
+        lv.setAdapter(adapter);
     }
 
     public void add(View v){
