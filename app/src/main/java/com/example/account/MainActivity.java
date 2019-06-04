@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
     Calendar c=Calendar.getInstance();
     static final String db_account="acDB";
     static final String table_account="actb";
@@ -33,30 +34,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         db = openOrCreateDatabase(db_account, Context.MODE_PRIVATE, null);
-        String CREAT_SQL = "CREATE TABLE IF NOT EXISTS " + table_account + "(名稱 VARCHER(32)," + "支出 VARCHER(32)," + "時間 VARCHER(32)," + "地點 VARCHER(32)," + "類別 VARCHER(32)," + "方式 VARCHER(32))";
+        String CREAT_SQL = "CREATE TABLE IF NOT EXISTS " + table_account + "(_id PRIMARY KEY AUTOINCREMENT , "+"名稱 VARCHER(32)," + "支出 VARCHER(32)," + "時間 VARCHER(32)," + "地點 VARCHER(32)," + "類別 VARCHER(32)," + "方式 VARCHER(32))";
         db.execSQL(CREAT_SQL);
-        cursor = db.rawQuery("SELECT * FROM " + table_account, null);
-        mData = new ArrayList<Map<String, Object>>();
-        Map<String, Object> itemData = null;
-        cursor.moveToFirst();
-        itemData = new HashMap<String, Object>();
-        itemData.put("名稱",cursor.getString(cursor.getColumnIndex("名稱")));
-        itemData.put("支出",cursor.getString(cursor.getColumnIndex("支出")));
-        itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
-        mData.add(itemData);
-        while (cursor.moveToNext()) {
-            itemData = new HashMap<String, Object>();
-            itemData.put("名稱",cursor.getString(cursor.getColumnIndex("名稱")));
-            itemData.put("支出",cursor.getString(cursor.getColumnIndex("支出")));
-            itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
-            mData.add(itemData);
-        };
-        adapter = new SimpleAdapter(this, mData, R.layout.accountlist, new String[]{"名稱", "支出", "時間"}, new int[]{R.id.textView23, R.id.textView21, R.id.textView22});
+        que();
         ListView lv = (ListView) findViewById(R.id.lv);
-        lv.setAdapter(adapter);
+
         lv.setOnItemClickListener(this);
+        lv.setOnItemLongClickListener(this);
 
 
         textView = (TextView) findViewById(R.id.textView);
@@ -79,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         cv.put("類別",type);
         cv.put("方式",payway);
         db.insert(table_account,null,cv);
+        que();
+    }
+    private void que(){
         cursor = db.rawQuery("SELECT * FROM " + table_account, null);
         mData = new ArrayList<Map<String, Object>>();
         Map<String, Object> itemData = null;
@@ -156,5 +144,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         place.setText(cursor.getString(cursor.getColumnIndex(FROM[3])));
         type.setText(cursor.getString(cursor.getColumnIndex(FROM[4])));
         payway.setText(cursor.getString(cursor.getColumnIndex(FROM[5])));
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        /*
+        cursor.moveToPosition(position);
+        db.delete(table_account,"_id"+cursor.getInt(0),null);
+        que();*/
+        return false;
     }
 }
