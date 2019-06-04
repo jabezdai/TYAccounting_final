@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mData = new ArrayList<Map<String, Object>>();
         Map<String, Object> itemData = null;
         cursor.moveToFirst();
+        itemData = new HashMap<String, Object>();
+        itemData.put("名稱",cursor.getString(cursor.getColumnIndex("名稱")));
+        itemData.put("支出",cursor.getString(cursor.getColumnIndex("支出")));
+        itemData.put("時間",cursor.getString(cursor.getColumnIndex("時間")));
+        mData.add(itemData);
         while (cursor.moveToNext()) {
             itemData = new HashMap<String, Object>();
             itemData.put("名稱",cursor.getString(cursor.getColumnIndex("名稱")));
@@ -122,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        cursor.moveToPosition(position);
         TextView name =(TextView)findViewById(R.id.textView34);
         TextView money =(TextView)findViewById(R.id.textView35);
         TextView time =(TextView)findViewById(R.id.textView36);
@@ -134,6 +140,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         place.setText(cursor.getString(cursor.getColumnIndex(FROM[3])));
         type.setText(cursor.getString(cursor.getColumnIndex(FROM[4])));
         payway.setText(cursor.getString(cursor.getColumnIndex(FROM[5])));
-        cursor.moveToPosition(position);
     }
 }
